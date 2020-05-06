@@ -8,9 +8,10 @@
 # Student 2: Rodrigo Ortiz-Carrion
 # description: Implementation of a scientific calculator ...
 
-# Usage: lab05.perl [-h] -f <infile> -o <outfile>
+# Usage: calculator.perl [-h] <x: number> <op: operation> [y: number]
 
-# lab05.perl
+# calculator.perl
+
 use strict;
 use warnings;
 use Scalar::Util 'looks_like_number';
@@ -58,8 +59,8 @@ while (@ARGV) {                         # parse command line arguments
      else {
        next; }
   } 
-  else {   
-     print "\nError See Usage\nUsage: calculator.perl [-h] <x: number> <op: operation> [y: number]\n";
+  else {                                # error in parsing
+     print "\nParsing Error See Usage\nUsage: calculator.perl [-h] <x: number> <op: operation> [y: number]\n";
      exit;
   }
 }
