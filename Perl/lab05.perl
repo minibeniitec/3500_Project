@@ -5,12 +5,57 @@
 # PERL IMPLEMENTATION OF A CUSTOM SCIENTIFIC CALCULATION
 # date: 05/05/2020
 # Student 1: Benjamin Garza
-# Student 2: Rodrigo Ortiz
+# Student 2: Rodrigo Ortiz-Carrion
 # description: Implementation of a scientific calculator ...
 
 # Usage: lab05.perl [-h] -f <infile> -o <outfile>
 
-# Calculator.perl
+# lab05.perl
 use strict;
 use warnings;
 use Scalar::Util 'looks_like_number';
+
+$x = 0
+$op = '+'
+$y = 0
+$result
+
+##########################
+# PARSE CMDLINE ARGS
+##########################
+while (@ARGV) {                         # parse command line arguments 
+  if (looks_like_number($ARGV[0])) {
+    shift;                              # move array elements up 
+    $op = $ARGV[0];
+    if ($op .eq )
+    shift;
+    next;                               # jump to start of while loop 
+  }
+  elsif ( $ARGV[0] eq '-h') {           # display usage 
+     print "\nUsage: calculator.perl [-h] <x: number> <op: operation> [y: number]\n";
+     print "Supported Operators: \n"
+     print "   +   : Addition\n"
+     print "   -   : Subtraction\n"
+     print "   *   : Multiplication\n"
+     print "   /   : Division\n"
+     print "   sin : Sine of x in degrees\n"
+     print "   cos : Cosine of x in degrees\n"
+     print "   tan : Tangent of x in degrees\n"
+     print "   exp : Exponential of x\n"
+     print "   ln  : Natural Log of x\n"
+     print "   sqrt: Square Root of x\n"
+     print "   sqr : Square of x\n"
+     print "   cbrt: Cubed Root of x\n"
+     print "   cube: Cube of x\n\n"
+     shift;
+     if (!@ARGV) {
+        exit;
+     }
+     else {
+       next; }
+  } 
+  else {   
+     print "\nUsage: calculator.perl [-h] <x: number> <op: operation> [y: number]\n";
+     exit;
+  }
+}
