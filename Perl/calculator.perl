@@ -48,7 +48,7 @@ sub unary {
 	} elsif ($_[1] eq 'exp') {
 		return exp($_[0]);
 	} elsif ($_[1] eq 'ln') {
-		return ln($_[0]);
+		return log($_[0]);
 	} elsif ($_[1] eq 'sqrt') {
 		return sqrt($_[0]);
 	} elsif ($_[1] eq 'sqr') {
@@ -87,7 +87,7 @@ while (@ARGV) {                         # parse command line arguments
 			} else {
             # Print Error or Do nothing
 			}
-		} elsif ($op eq 'sin' | $op eq 'cos' | $op eq 'tan' | $op eq 'exp' | $op eq 'ln' | $op eq 'sin' | $op eq 'sin' | $op eq 'sin' | $op eq 'sin') {
+		} elsif ($op eq 'sin' | $op eq 'cos' | $op eq 'tan' | $op eq 'exp' | $op eq 'ln' | $op eq 'sqrt' | $op eq 'sqr' | $op eq 'cbrt' | $op eq 'cube') {
          $result = unary($x, $op);
          print "Unary result: ", $result, " \n";
          last; 
@@ -101,7 +101,7 @@ while (@ARGV) {                         # parse command line arguments
       print "Supported Operators: \n";
       print "   +   : Addition\n";
       print "   -   : Subtraction\n";
-      print "   *   : Multiplication\n";
+      print "   \*  : Multiplication\n";
       print "   /   : Division\n";
       print "   sin : Sine of x in degrees\n";
       print "   cos : Cosine of x in degrees\n";
