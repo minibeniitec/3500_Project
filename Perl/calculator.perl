@@ -30,10 +30,15 @@ sub binary {
 	} elsif ($_[1] eq '*') {
 		return $_[0] * $_[2];
 	} elsif ($_[1] eq '/') {
+		unless ($_[2]) { return 'undefined: division by 0'}
 		return $_[0] / $_[2];
+	} elsif ($_[1] eq 'x^y') {
+		return $_[0] ** $_[2];
+	} elsif ($_[1] eq '%') {
+		unless ($_[2]) { return 'undefined: modulo by 0'}
+		return $_[0] % $_[2];
 	} else {
 		print "Error in binary\n\n";
-		exit;
 	}
 }
 
@@ -45,21 +50,23 @@ sub unary {
 		return cos($_[0] * pi() / 180);
 	} elsif ($_[1] eq 'tan') {
 		return tan($_[0] * pi() / 180);
-	} elsif ($_[1] eq 'exp') {
+	} elsif ($_[1] eq 'e^x') {
 		return exp($_[0]);
 	} elsif ($_[1] eq 'ln') {
+		unless ($_[0]) { return 'undefinded'; } 
 		return log($_[0]);
 	} elsif ($_[1] eq 'sqrt') {
+		unless($_[0] >= 0) { return sqrt($_[0] * -1) . 'i'; }
 		return sqrt($_[0]);
-	} elsif ($_[1] eq 'sqr') {
-		return $_[0] * $_[0];
+	} elsif ($_[1] eq '2^x') {
+		return 2.0 ** $_[0];
 	} elsif  ($_[1] eq 'cbrt') {
+		unless($_[0] >= 0) { return (-1*(($_[0] * -1)**(1/3))); }
 		return $_[0] ** (1/3);
-	} elsif ($_[1] eq 'cube') {
-		return $_[0] ** 3;
+	} elsif ($_[1] eq '3^x') {
+		return 3 ** $_[0];
 	} else {
 		print "Error in unary\n\n";
-		exit;
 	}
 }
 
@@ -77,7 +84,7 @@ while (@ARGV) {                         # parse command line arguments
 		shift;                              # move array elements up 
 		$op = $ARGV[0];
 
-		if ($op eq '+' | $op eq '-' | $op eq '*' | $op eq '/') {
+		if ($op eq '+' | $op eq '-' | $op eq '*' | $op eq '/' | $op eq '%' | $op eq 'x^y') {
 			shift;
 			if(looks_like_number($ARGV[0])) {
 				$y = $ARGV[0];
@@ -87,7 +94,7 @@ while (@ARGV) {                         # parse command line arguments
 			} else {
             # Print Error or Do nothing
 			}
-		} elsif ($op eq 'sin' | $op eq 'cos' | $op eq 'tan' | $op eq 'exp' | $op eq 'ln' | $op eq 'sqrt' | $op eq 'sqr' | $op eq 'cbrt' | $op eq 'cube') {
+		} elsif ($op eq 'sin' | $op eq 'cos' | $op eq 'tan' | $op eq 'e^x' | $op eq 'ln' | $op eq 'sqrt' | $op eq 'sqr' | $op eq 'cbrt' | $op eq '2^x' | $op eq '3^x') {
          $result = unary($x, $op);
          print "Unary result: ", $result, " \n";
          last; 
