@@ -177,7 +177,7 @@ sub concatenation {
 		if ($state lt '2') { $dbuffer = $dbuffer . $btn; $x = $dbuffer; } 
 		else {$dbuffer = $dbuffer . $btn; $y = $dbuffer; }
 	}
-	unless( $btn =~ /(\d)|\./){ $calc = ''; $dbuffer = ''; }
+	unless( $btn =~ /(\d)|\./){  }
 
  	if( $btn =~ /(\d)|\./)
 	{
