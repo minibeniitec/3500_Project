@@ -7,7 +7,6 @@
 # Student 1: Benjamin Garza
 # Student 2: Rodrigo Ortiz-Carrion
 # description: Implementation of a scientific calculator ...
-# Usage: calculator.perl [-h] <x: number> <op: operation> [y: number]
 
 use strict;
 use warnings;
@@ -39,15 +38,17 @@ my $dbuffer = '';
 
 
 # Create calculator window with title
-my $window = new MainWindow(-title => 'Calculator');
+my $window = new MainWindow(-title => 'Calculator', -background => 'black');
 $window->geometry("400x300");
 
-my $topframe = $window->Frame(-height => '100', -width => '300')->pack(-side => 'top', -expand => '0', -fill => 'x');
-my $btmframe = $window->Frame(-height => '225', -width => '300',)->pack(-side => 'left', -expand => '1', -fill => 'both');
+my $topframe = $window->Frame(-height => '100', -width => '300', -background => 'black')->pack(-side => 'top', -expand => '0', -fill => 'x');
+my $btmframe = $window->Frame(-height => '225', -width => '300',-background => 'black')->pack(-side => 'left', -expand => '1', -fill => 'both');
 push @rows, $btmframe->Frame()->pack( -expand => 1, -fill => 'both', -side => 'top') for (0..4);
 
 my $display   =  $topframe->Entry(-justify      => 'right',
 		-state        => 'disabled', 
+		-background => 'white',
+		-foreground => 'black',
 		-textvariable => \$calc)
 ->pack(-expand       => '1',
 		-fill         => 'x',
@@ -70,7 +71,9 @@ for my $i (
 	$button{$i} = $rows[$r]->Button(-text    => "$i", 
 		-width   => '3', 
 		-height  => '1', 
-		-command => sub { &btnpress($i) })
+		-command => sub { &btnpress($i) },
+		-background => 'blue',
+		-foreground => 'white')
 	->pack(-expand  => 1,
 		-fill    => 'both',
 		-padx    => 2, 
@@ -237,7 +240,7 @@ sub unary {
 	} elsif ($_[1] eq 'e^x') {
 		return exp($_[0]);
 	} elsif ($_[1] eq 'ln') {
-		unless ($_[0]) { return 'undefinded'; } 
+		unless ($_[0] > 0) { return 'undefined ln(x) x <= 0'; } 
 		return log($_[0]);
 	} elsif ($_[1] eq 'sqrt') {
 		unless($_[0] >= 0) { return sqrt($_[0] * -1) . 'i'; }
