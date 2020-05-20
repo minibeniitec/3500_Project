@@ -1,5 +1,6 @@
 '''
-Name: Rodrigo Ortiz
+Student 1: Rodrigo Ortiz
+Student 2: Benjamin Garza
 Course: CMPS 3500
 Date: 5/7/2020
 Description: Scientific Calculator in Python: Final Project
@@ -38,6 +39,8 @@ def exp(num):
     return math.exp(num)
 
 def ln(num):
+    if num <=0:
+        return "Compute Error"
     return math.log(num)
 
 def sqrt(num):
@@ -113,7 +116,7 @@ def main():
     buttonText = customFont.render("=", 1, (255, 255, 255))
     screen.blit(buttonText, (295+50, basePosH+10))
     
-    running = True
+    running = False
     while running:
     # event handling, gets all event from the event queue
         for event in pygame.event.get():
