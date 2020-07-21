@@ -26,4 +26,5 @@ Perl Calculator:
   -	X % Y
   -	X ^ Y
 
-  
+Python Calculator:
+- The python version of the calculator was written by Rodrigo Ortiz-Carrion and was has not been completed.
