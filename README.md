@@ -1,10 +1,11 @@
 # 3500_Project
 Two GUI calculators using Perl and Python
 
-#Perl Calculator:
+Perl Calculator:
 -The perl version of the calculator was written by Benjamin Garza.
 -The code uses a GUI based off an online Perl Tk calculator that greatly 
 lacked real functionality.
+
 Features Include:
   -Clear and All Clear added
   -Buffer clears on returned function output
